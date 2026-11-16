@@ -674,6 +674,16 @@ function sPlan(){
     ["Fase 2 · Por planta y por falla","ch-nu","Siguiente","Stock de Yanacocha Norte, Pampa Larga y La Quinua, y por qué y cada cuánto falla cada pieza.","IW69 avisos con códigos de falla · IK17 horómetros · IP24 planes de mantenimiento · ubicaciones técnicas","Stock por planta y vida útil por pieza (Weibull, IEC 61649)."],
     ["Fase 3 · Más equipos","ch-nu","Futuro","El mismo método para otros equipos de la taxonomía ISO 14224.","Estándar de repuestos de cada equipo + los mismos datos SAP","Stock estándar por equipo, en esta misma página."]
   ].map(f=>`<div class="kpi" style="gap:6px"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap"><b style="color:var(--ttl);font-size:14px">${f[0]}</b><span class="chip ${f[1]}">${f[2]}</span></div><span>${f[3]}</span><span class="s"><b>Datos:</b> ${f[4]}</span><span class="s"><b>Resultado:</b> ${f[5]}</span></div>`).join("")}</div>`)}
+  ${grp("¿Por qué primero Yanacocha y luego por planta?",`<div class="cols c4">${[
+    ["1 · Los datos existen así","ISO 14224","Todo el historial SAP está en el centro 3000. La norma permite agrupar equipos similares para tener una población con valor estadístico."],
+    ["2 · Por planta hay muy pocos consumos","Syntetos-Boylan","Dividido entre 3 plantas, la mayoría de los años queda en 0 y el mínimo sería inestable. Se pronostica arriba y se reparte hacia abajo."],
+    ["3 · El stock compartido necesita menos reserva","Teoría de inventarios","Con 3 plantas que comparten stock, el stock de seguridad total baja en el orden del 40 % (regla de la raíz cuadrada; modelo METRIC de dos niveles)."],
+    ["4 · La criticidad decide qué va a cada planta","NORSOK Z-008 · ISO 55001","Lo crítico que no puede esperar el traslado se guarda en la planta; el resto se centraliza. Las decisiones bajan de la organización al sitio."]
+  ].map(f=>`<div class="kpi" style="gap:6px"><b style="color:var(--ttl);font-size:14px">${f[0]}</b><span class="eyebrow" style="font-size:10.5px">${f[1]}</span><span>${f[2]}</span></div>`).join("")}</div>
+  <div class="cols c2">
+    <div class="info"><b>Cuándo convendría al revés:</b> si cada planta tuviera su propio centro SAP, almacén y presupuesto; si el traslado entre plantas tardara más de lo que la operación aguanta; o si las bombas trabajaran en condiciones muy distintas. Hoy no se cumple ninguna: un centro SAP, un estándar común y el mismo modelo de bomba.</div>
+    <div class="note"><b>Señal a vigilar en la fase 2:</b> los planes de mantenimiento difieren (YN 18 y 36 meses, PL 9 y 18, LQ 12). Antes de usar un parámetro común se prueba que las plantas sean homogéneas, como pide ISO 14224; si una difiere, recibe parámetros propios.</div>
+  </div>`)}
   ${nav2()}</section>`;
 }
 
