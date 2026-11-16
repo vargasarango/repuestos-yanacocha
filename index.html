@@ -669,6 +669,11 @@ function sPlan(){
     <div class="kpi"><span class="v num am">~1 h</span><span class="l">Esfuerzo total de las áreas</span><span class="s">4 pedidos cortos y precisos</span></div>
     <div class="kpi"><span class="v num gr">45 min</span><span class="l">Validación por planta</span><span class="s">YN, PL y LQ</span></div>
   </div>
+  ${grp("Hoja de ruta del análisis",`<div class="cols c3">${[
+    ["Fase 1 · Yanacocha consolidado","ch-cy","En curso","Las 50 bombas como una sola flota (centro SAP 3000).","ME2M (recibido) · MB51 · MB52 · IW39 · criticidad","Categoría, mínimo, punto de reorden y máximo de los 28 repuestos, al "+sapd(D.config.fechaResultado)+"."],
+    ["Fase 2 · Por planta y por falla","ch-nu","Siguiente","Stock de Yanacocha Norte, Pampa Larga y La Quinua, y por qué y cada cuánto falla cada pieza.","IW69 avisos con códigos de falla · IK17 horómetros · IP24 planes de mantenimiento · ubicaciones técnicas","Stock por planta y vida útil por pieza (Weibull, IEC 61649)."],
+    ["Fase 3 · Más equipos","ch-nu","Futuro","El mismo método para otros equipos de la taxonomía ISO 14224.","Estándar de repuestos de cada equipo + los mismos datos SAP","Stock estándar por equipo, en esta misma página."]
+  ].map(f=>`<div class="kpi" style="gap:6px"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap"><b style="color:var(--ttl);font-size:14px">${f[0]}</b><span class="chip ${f[1]}">${f[2]}</span></div><span>${f[3]}</span><span class="s"><b>Datos:</b> ${f[4]}</span><span class="s"><b>Resultado:</b> ${f[5]}</span></div>`).join("")}</div>`)}
   ${nav2()}</section>`;
 }
 
@@ -680,7 +685,7 @@ function sSintesis(){
   <div class="cols c3">
     ${col("Ya tenemos","ch-gr",["<b>Estándar consolidado</b> de las 3 plantas: 28 repuestos, 50 bombas, 30 piezas por bomba.","<b>Historial de compras SAP</b> 2012–2026: "+fmt(D.validacion.lineas)+" líneas, validado y cruzado con el estándar.","<b>Patrón de demanda</b> preliminar de cada repuesto (Syntetos-Boylan).","<b>Metodología</b> con una norma en cada paso."])}
     ${col("Falta","ch-am",["<b>Almacén · MB51:</b> consumo real y lead time real (en 48 h).","<b>Almacén · MB52:</b> stock actual.","<b>Planificación · IW39:</b> órdenes preventivas o correctivas.","<b>Planificadores:</b> 5 preguntas de criticidad, 10 min por planta."])}
-    ${col("Se tendrá al "+sapd(D.config.fechaResultado),"ch-cy",["<b>Categoría de almacén</b> de cada repuesto.","<b>Mínimo, punto de reorden y máximo</b> con fuente y norma.","<b>Base lista para abrir por planta</b> (fase 2).","<b>Solicitud de carga en SAP</b> aprobada por el líder."])}
+    ${col("Se tendrá al "+sapd(D.config.fechaResultado),"ch-cy",["<b>Categoría de almacén</b> de cada repuesto.","<b>Mínimo, punto de reorden y máximo</b> con fuente y norma.","<b>Base lista para abrir por planta</b> (fase 2).","<b>Solicitud de carga en SAP</b> aprobada por el líder.","<b>Después, fase 2:</b> stock por planta y vida útil por pieza (IW69, horómetros IK17, planes IP24)."])}
   </div>
   <div class="ask"><div style="flex:1;min-width:240px"><div class="eyebrow">Lo que necesitamos</div><div class="big">Respaldo para enviar los 4 pedidos de datos SAP el lunes 16.11.2026.</div></div><button class="btn" data-go="8">Ver el plan</button></div>
   ${nav2()}</section>`;
